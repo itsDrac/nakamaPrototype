@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dblcd1v0c1hqf"]
+
+[ext_resource type="Script" path="res://scripts/Level.gd" id="1_1jgvb"]
+[ext_resource type="Texture2D" uid="uid://cpnyv1rqg2x6u" path="res://resources/Terrain (16x16).png" id="1_2c1ru"]
+[ext_resource type="PackedScene" uid="uid://dbg6wr6p2legd" path="res://scenes/Player.tscn" id="2_lbceu"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_1jgvb")
+player = ExtResource("2_lbceu")
+
+[node name="Player1Ground" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(235, 557)
+scale = Vector2(4, 4)
+texture = ExtResource("1_2c1ru")
+region_enabled = true
+region_rect = Rect2(96, 0, 47, 46)
+
+[node name="Player2Ground" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(859, 552)
+scale = Vector2(4, 4)
+texture = ExtResource("1_2c1ru")
+region_enabled = true
+region_rect = Rect2(97, 64, 46, 47)
+
+[node name="SpawnPlayer1" type="Marker2D" parent="."]
+position = Vector2(235, 341)
+
+[node name="SpawnPlayer2" type="Marker2D" parent="."]
+position = Vector2(862, 341)
+rotation = 3.14159
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://scenes/Player.tscn")
+spawn_path = NodePath("..")

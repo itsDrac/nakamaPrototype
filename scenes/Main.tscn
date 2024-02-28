@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://byj0b03nlol4i"]
+
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1_lmdv8"]
+[ext_resource type="PackedScene" uid="uid://clb6h8e3e3aoy" path="res://scenes/Lobby.tscn" id="2_er170"]
+[ext_resource type="PackedScene" uid="uid://cw7cnai8xompk" path="res://scenes/Game.tscn" id="2_jsowd"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_lmdv8")
+gameScene = ExtResource("2_jsowd")
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Lobby" parent="GUI" instance=ExtResource("2_er170")]

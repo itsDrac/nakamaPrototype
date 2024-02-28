@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw7cnai8xompk"]
+
+[ext_resource type="PackedScene" uid="uid://dblcd1v0c1hqf" path="res://scenes/Level.tscn" id="1_pncjd"]
+[ext_resource type="LabelSettings" uid="uid://bedcoo83v8imj" path="res://resources/BigHeading.res" id="2_jpymx"]
+[ext_resource type="LabelSettings" uid="uid://dvou5eda4yon4" path="res://resources/Heading.res" id="3_2b1jy"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Level" parent="." instance=ExtResource("1_pncjd")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBC" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 90.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBC"]
+layout_mode = 2
+text = "Timer"
+label_settings = ExtResource("2_jpymx")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/VBC"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="MC" type="MarginContainer" parent="CanvasLayer/VBC"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+
+[node name="HBC" type="HBoxContainer" parent="CanvasLayer/VBC/MC"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="ScorePlayer1" type="Label" parent="CanvasLayer/VBC/MC/HBC"]
+layout_mode = 2
+text = "%s point(s)"
+label_settings = ExtResource("3_2b1jy")
+
+[node name="Result" type="RichTextLabel" parent="CanvasLayer/VBC/MC/HBC"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center][wave][rainbow]Player %s Won"
+
+[node name="ScorePlayer2" type="Label" parent="CanvasLayer/VBC/MC/HBC"]
+layout_mode = 2
+text = "%s point(s)"
+label_settings = ExtResource("3_2b1jy")

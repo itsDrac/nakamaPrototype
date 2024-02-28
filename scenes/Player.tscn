@@ -1,0 +1,215 @@
+[gd_scene load_steps=30 format=3 uid="uid://dbg6wr6p2legd"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_w7pvk"]
+[ext_resource type="Texture2D" uid="uid://bv740wi1ktwpm" path="res://resources/Idle (32x32).png" id="2_fghwn"]
+[ext_resource type="Texture2D" uid="uid://bshedxnxekisp" path="res://resources/Run (32x32).png" id="3_pnsow"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wj56u"]
+atlas = ExtResource("2_fghwn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qiqbk"]
+atlas = ExtResource("2_fghwn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpgn1"]
+atlas = ExtResource("2_fghwn")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fc68o"]
+atlas = ExtResource("2_fghwn")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8a27t"]
+atlas = ExtResource("2_fghwn")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijnk2"]
+atlas = ExtResource("2_fghwn")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20sdo"]
+atlas = ExtResource("2_fghwn")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pukjw"]
+atlas = ExtResource("2_fghwn")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubfvf"]
+atlas = ExtResource("2_fghwn")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ja1mu"]
+atlas = ExtResource("2_fghwn")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3whm"]
+atlas = ExtResource("2_fghwn")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rs3j5"]
+atlas = ExtResource("3_pnsow")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_867hy"]
+atlas = ExtResource("3_pnsow")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8b1re"]
+atlas = ExtResource("3_pnsow")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqp0p"]
+atlas = ExtResource("3_pnsow")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f138l"]
+atlas = ExtResource("3_pnsow")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_de00t"]
+atlas = ExtResource("3_pnsow")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7lkd"]
+atlas = ExtResource("3_pnsow")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qaqbk"]
+atlas = ExtResource("3_pnsow")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frapa"]
+atlas = ExtResource("3_pnsow")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwa5w"]
+atlas = ExtResource("3_pnsow")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jg0j1"]
+atlas = ExtResource("3_pnsow")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jnq6"]
+atlas = ExtResource("3_pnsow")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ecbun"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wj56u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qiqbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpgn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fc68o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8a27t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijnk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20sdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pukjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubfvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ja1mu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3whm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rs3j5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_867hy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8b1re")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqp0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f138l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_de00t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7lkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qaqbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frapa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwa5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jg0j1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jnq6")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jplhr"]
+size = Vector2(32, 48)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_yiw6r"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_w7pvk")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ecbun")
+animation = &"idle"
+autoplay = "idle"
+frame = 8
+speed_scale = 3.0
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_jplhr")
+
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_yiw6r")
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
