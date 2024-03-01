@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://clb6h8e3e3aoy"]
+[gd_scene load_steps=3 format=3 uid="uid://clb6h8e3e3aoy"]
 
 [ext_resource type="Script" path="res://scripts/Lobby.gd" id="1_45fhn"]
+[ext_resource type="PackedScene" uid="uid://cw7cnai8xompk" path="res://scenes/Game.tscn" id="2_thffv"]
 
 [node name="Lobby" type="Control"]
 layout_mode = 3
@@ -10,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_45fhn")
+gameScene = ExtResource("2_thffv")
 
 [node name="MatchName" type="LineEdit" parent="."]
 layout_mode = 0

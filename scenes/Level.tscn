@@ -1,22 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://dblcd1v0c1hqf"]
+[gd_scene load_steps=6 format=3 uid="uid://dblcd1v0c1hqf"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_1jgvb"]
 [ext_resource type="Texture2D" uid="uid://cpnyv1rqg2x6u" path="res://resources/Terrain (16x16).png" id="1_2c1ru"]
 [ext_resource type="PackedScene" uid="uid://dbg6wr6p2legd" path="res://scenes/Player.tscn" id="2_lbceu"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gi5vo"]
+size = Vector2(46.25, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mbius"]
+size = Vector2(46.5, 33.25)
+
 [node name="Level" type="Node2D"]
 script = ExtResource("1_1jgvb")
 player = ExtResource("2_lbceu")
 
-[node name="Player1Ground" type="Sprite2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Player1Ground" type="Sprite2D" parent="StaticBody2D"]
 texture_filter = 1
 position = Vector2(235, 557)
 scale = Vector2(4, 4)
 texture = ExtResource("1_2c1ru")
 region_enabled = true
 region_rect = Rect2(96, 0, 47, 46)
+metadata/_edit_lock_ = true
 
-[node name="Player2Ground" type="Sprite2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(235.5, 531)
+scale = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_gi5vo")
+metadata/_edit_lock_ = true
+
+[node name="Player2Ground" type="Sprite2D" parent="StaticBody2D"]
 texture_filter = 1
 position = Vector2(859, 552)
 scale = Vector2(4, 4)
@@ -24,13 +39,14 @@ texture = ExtResource("1_2c1ru")
 region_enabled = true
 region_rect = Rect2(97, 64, 46, 47)
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(859, 525.5)
+scale = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_mbius")
+
 [node name="SpawnPlayer1" type="Marker2D" parent="."]
 position = Vector2(235, 341)
 
 [node name="SpawnPlayer2" type="Marker2D" parent="."]
 position = Vector2(862, 341)
 rotation = 3.14159
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://scenes/Player.tscn")
-spawn_path = NodePath("..")

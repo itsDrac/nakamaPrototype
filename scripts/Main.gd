@@ -7,7 +7,7 @@ func _ready():
 	GM.session = await make_session(GM.client)
 	GM.socket = await make_socket(GM.client, GM.session)
 	SM.online_setup_done.emit()
-	SM.player_match_joined.connect(add_game)
+	#SM.player_match_joined.connect(add_game)
 
 func make_client() -> NakamaClient:
 	var client = Nakama.create_client("defaultkey", "127.0.0.1", 7350, "http")
@@ -21,7 +21,7 @@ func make_session(client) -> NakamaSession:
 	var device_id = randId
 	var session : NakamaSession = await client.authenticate_custom_async(device_id)
 	if session.is_exception():
-		#print_debug("An error occurred is session: %s" % session)
+		print_debug("An error occurred is session: %s" % session)
 		return
 	return session
 	
@@ -30,10 +30,11 @@ func make_socket(client, session) -> NakamaSocket:
 	var socket = Nakama.create_socket_from(client)
 	var connected : NakamaAsyncResult = await socket.connect_async(session)
 	if connected.is_exception():
-		#print_debug("An error occurred in socket: %s" % connected)
+		print_debug("An error occurred in socket: %s" % connected)
 		return
 	return socket
 	
 
 func add_game():
 	get_tree().change_scene_to_packed(gameScene)
+

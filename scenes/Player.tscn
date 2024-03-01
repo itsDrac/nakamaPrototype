@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dbg6wr6p2legd"]
+[gd_scene load_steps=29 format=3 uid="uid://dbg6wr6p2legd"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_w7pvk"]
 [ext_resource type="Texture2D" uid="uid://bv740wi1ktwpm" path="res://resources/Idle (32x32).png" id="2_fghwn"]
@@ -178,7 +178,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4jnq6")
 }],
-"loop": true,
+"loop": false,
 "name": &"run",
 "speed": 5.0
 }]
@@ -186,20 +186,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jplhr"]
 size = Vector2(32, 48)
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_yiw6r"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_w7pvk")
+metadata/_edit_lock_ = true
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ecbun")
-animation = &"idle"
+animation = &"run"
 autoplay = "idle"
-frame = 8
 speed_scale = 3.0
 
 [node name="Collision" type="CollisionShape2D" parent="."]
@@ -209,7 +204,17 @@ shape = SubResource("RectangleShape2D_jplhr")
 [node name="ReloadTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_yiw6r")
+[node name="ScreenVisible" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, 8.5)
+scale = Vector2(1, 1.85)
+
+[node name="BulletSpwanP1" type="Marker2D" parent="."]
+position = Vector2(64, 0)
+scale = Vector2(2, 2)
+
+[node name="BulletSpwanP2" type="Marker2D" parent="."]
+position = Vector2(-64, 0)
+scale = Vector2(2, 2)
 
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="screen_exited" from="ScreenVisible" to="." method="_on_screen_visible_screen_exited"]
