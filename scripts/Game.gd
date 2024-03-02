@@ -15,7 +15,11 @@ func _ready():
 		func(is_server): 
 			rpc("show_result", is_server)
 	)
-	#get_tree().get_multiplayer().peer_connected.connect(_on_peer_connected)
+	get_tree().get_multiplayer().peer_connected.connect(_on_peer_connected)
+
+func _process(_delta):
+	var timeLeft = $Timer.time_left
+	#rpc("update_timer", str(timeLeft))
 
 @rpc("any_peer")
 func update_live_label(live: int, is_server):
@@ -31,3 +35,11 @@ func show_result(is_server):
 	result.text = result.text % winner
 	result.show()
 	return
+
+func _on_peer_connected(peerId):
+	#pass
+	$Timer.start()
+
+@rpc("any_peer")
+func update_timer(timeLeft: String):
+	$CanvasLayer/VBC/TimerLabel.text = "timeLeft" 

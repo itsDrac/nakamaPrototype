@@ -7,7 +7,6 @@ func _ready():
 	GM.session = await make_session(GM.client)
 	GM.socket = await make_socket(GM.client, GM.session)
 	SM.online_setup_done.emit()
-	#SM.player_match_joined.connect(add_game)
 
 func make_client() -> NakamaClient:
 	var client = Nakama.create_client("defaultkey", "127.0.0.1", 7350, "http")
@@ -17,7 +16,6 @@ func make_client() -> NakamaClient:
 
 func make_session(client) -> NakamaSession:
 	var randId = var_to_str(randi_range(100000,999999))
-	print_debug(randId)
 	var device_id = randId
 	var session : NakamaSession = await client.authenticate_custom_async(device_id)
 	if session.is_exception():

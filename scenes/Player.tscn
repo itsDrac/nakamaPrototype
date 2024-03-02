@@ -216,5 +216,8 @@ scale = Vector2(2, 2)
 position = Vector2(-64, 0)
 scale = Vector2(2, 2)
 
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("..")
+
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
 [connection signal="screen_exited" from="ScreenVisible" to="." method="_on_screen_visible_screen_exited"]

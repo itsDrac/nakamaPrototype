@@ -19,4 +19,5 @@ shape = SubResource("RectangleShape2D_k41yb")
 [node name="ScreenVisible" type="VisibleOnScreenNotifier2D" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="screen_exited" from="ScreenVisible" to="." method="_on_screen_visible_screen_exited"]

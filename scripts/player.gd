@@ -9,17 +9,23 @@ var lives := 5
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var can_throw := true
 var in_knockback := false
-var spawnpoints := [Vector2(256, 384), Vector2(896, 384)]
+#var spawnpoints := [Vector2(256, 384), Vector2(896, 384)]
 var anim : String:
 	set(new_anim):
 		anim = new_anim 
 		rpc("play_anim", new_anim)
 var currentAnimation = "idle"
+
+@onready var multiplayer_spawner = $MultiplayerSpawner
+
+
 #
 #func _enter_tree() -> void:
 	#set_multiplayer_authority(name.to_int())
 
 func _ready() -> void:
+	multiplayer_spawner.spawn_function=shoot
+	#SM.despawn_ball.connect(multiplayer_spawner.clear_spawnable_scenes)
 	if name.to_int() != 1:
 		$Sprite.flip_h = true
 		is_server = false
@@ -37,12 +43,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y += gravity * delta
 	
 	if Input.is_action_just_pressed("ui_accept") && can_throw:
-		shoot.rpc(name)
-		#var ball := BALL_INST.instantiate()
-		#ball.position = Vector2(position.x + 64, 0)
-		#ball.shooter_id = name
-		#ball.dir *= 1 if is_server else -1
-		#add_child(ball)
+		multiplayer_spawner.spawn(name)
 		$ReloadTimer.start()
 		can_throw = false
 	
@@ -68,25 +69,27 @@ func update_remote_player(newPosition, newCurrentAnimation):
 	$Sprite.set_animation(newCurrentAnimation)
 	#rotation = newRotation
 
-@rpc("any_peer")
-func shoot(shooter) -> void:
+
+func shoot(shooter) -> Area2D:
 	var ball := BALL_INST.instantiate()
 	if shooter.to_int() == 1:
 		ball.position = $BulletSpwanP1.position
+		ball.dir *= 1
 	else:
 		ball.position = $BulletSpwanP2.position
+		ball.dir *= -1
 	ball.shooter_id = shooter
-	ball.dir *= 1 if is_server else -1
-	add_child(ball)
+	return ball
 
 @rpc("any_peer")
 func play_anim(new_anim : String) -> void:
 	$Sprite.set_animation(new_anim)
 
 func apply_knockback() -> void:
+	if in_knockback: return
 	in_knockback = true
-	velocity.x = -2000 if (name.to_int() == 1) else 2000
-	await get_tree().create_timer(0.2).timeout
+	velocity.x = -1500 if (name.to_int() == 1) else 1500
+	await get_tree().create_timer(0.3).timeout
 	in_knockback = false
 
 func _on_reload_timer_timeout() -> void:

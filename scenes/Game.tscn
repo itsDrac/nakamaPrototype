@@ -18,7 +18,7 @@ anchor_right = 1.0
 offset_bottom = 90.0
 grow_horizontal = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/VBC"]
+[node name="TimerLabel" type="Label" parent="CanvasLayer/VBC"]
 layout_mode = 2
 text = "Timer"
 label_settings = ExtResource("2_jpymx")
@@ -58,3 +58,7 @@ text = "[center][wave][rainbow]Player %s Won"
 layout_mode = 2
 text = "5 lives"
 label_settings = ExtResource("3_2b1jy")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 300.0
+one_shot = true
