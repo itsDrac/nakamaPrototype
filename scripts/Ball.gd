@@ -12,13 +12,10 @@ func _physics_process(_delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if (body.name != shooter_id):
 		body.apply_knockback()
-		#SM.despawn_ball.emit()
-		#await get_tree().create_timer(.1).timeout
 		hide()
 
 
 func _on_screen_visible_screen_exited():
-	#SM.despawn_ball.emit()
 	queue_free()
 
 
